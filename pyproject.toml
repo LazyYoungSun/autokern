@@ -1,0 +1,30 @@
+[project]
+name = "autokern"
+version = "0.1.0"
+description = "Auto-kerning tool for Glyphs files"
+readme = "README.md"
+requires-python = ">=3.9"
+dependencies = [
+    "click>=8.1.7",
+    "fonttools>=4.51.0",
+    "glyphsLib>=6.6.1",
+    "pillow>=10.3.0",
+    "torch<=2.2.2",
+    "torchvision<=0.17.2",
+    "ufo2ft>=3.2.0",
+    "numpy<=1.26.4",
+]
+
+[project.scripts]
+autokern = "autokern.cli:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/autokern"]
+include = [
+  "src/autokern/*.json",
+  "src/autokern/weights/*.pth"
+]
