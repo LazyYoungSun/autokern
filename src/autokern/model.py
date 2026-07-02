@@ -53,9 +53,7 @@ def predict_kerning(pairs, font_ttf_path, weights_dir, device="cpu"):
         expert.load_state_dict(torch.load(wf, map_location=device))
         expert.eval()
         experts.append(expert)
-        
-    print(f"Ансамблирование: успешно загружено {len(experts)} моделей фолдов для усреднения.")
-    
+            
     transform = transforms.Compose([
         transforms.Grayscale(num_output_channels=3),
         transforms.ToTensor(),

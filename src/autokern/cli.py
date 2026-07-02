@@ -128,7 +128,7 @@ def main(input_file, output, json_path, pairs):
                 new_pairs_added += 1
             merged_kerning[(g_name1, g_name2)] = kern_val
 
-    click.echo(f"Результаты слияния: Добавлено новых пар: {new_pairs_added}, Перезаписано старых: {overwritten_pairs}")
+    click.echo(f"Добавлено новых пар: {new_pairs_added}, Перезаписано старых: {overwritten_pairs}")
 
     fea_text = "feature kern {\n"
     for (g_name1, g_name2), kern_val in merged_kerning.items():
@@ -139,7 +139,7 @@ def main(input_file, output, json_path, pairs):
     try:
         addOpenTypeFeaturesFromString(font, fea_text)
         font.save(output_file)
-        click.echo(click.style(f" Сгенерирован новый TTF: {output_file}", fg='green'))
+        click.echo(click.style(f" Сгенерирован TTF: {output_file}", fg='green'))
     except Exception as e:
         click.echo(f"Ошибка при сборке OpenType таблиц: {e}", err=True)
 
